@@ -1,0 +1,22 @@
+<div id="<%= dom_id documento %>">
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Rg:</strong>
+    <%= documento.rg %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Cpf:</strong>
+    <%= documento.cpf %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Pessoa:</strong>
+    <%= documento.pessoa_id %>
+  </p>
+
+  <% if action_name != "show" %>
+    <%= link_to "Show this documento", documento, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to 'Edit this documento', edit_documento_path(documento), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div>
