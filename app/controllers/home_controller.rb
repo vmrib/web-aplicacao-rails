@@ -1,4 +1,9 @@
 class HomeController < ApplicationController
-  def index
+  def user
+    session[:isAdmin?] = false
+  end
+
+  def admin
+    session[:isAdmin?] = true
   end
 end

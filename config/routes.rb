@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get 'login/index'
-  get 'home/index'
+  get 'home/user'
+  get 'home/admin'
   resources :esportes_pessoas
   resources :esportes
   resources :documentos
