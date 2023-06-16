@@ -1,26 +1,11 @@
-# <div class="grid h-screen place-items-center">
-#   <div class="card w-96 bg-neutral text-neutral-content">
-#     <div class="card-body items-center text-center">
-#       <h2 class="card-title">Login</h3>
-#       <p>Como deseja visualizar as tabelas?</p>
-#       <%= form_with url: home_index_path, method: :get do |form| %>
-#         <div class="card-actions pt-4">
-#           <%= form.button "Usuário", class: "btn btn-primary", name: "tipo", value: "usuario" %>
-#           <%= form.button "Administrador", class: "btn", name: "tipo", value: "administrador" %>
-#         </div>
-#       <% end %>
-#     </div>
-#   </div>
-# </div>
-
 <div class="grid h-screen place-items-center">
-  <div class="card w-96 bg-neutral text-neutral-content">
+  <div class="card w-96 bg-base-300 text-neutral-content shadow-xl">
     <div class="card-body items-center text-center">
       <h2 class="card-title">Login</h3>
       <p>Como deseja visualizar as tabelas?</p>
       <div class="card-actions pt-4">
         <%= button_to "Usuário", home_user_path, method: :get, class: "btn btn-primary" %>
-        <%= button_to "Administrador", home_admin_path, method: :get, class: "btn" %>
+        <%= button_to "Administrador", home_admin_path, method: :get, class: "btn btn-outline" %>
       </div>
     </div>
   </div>

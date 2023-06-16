@@ -1,8 +1,26 @@
-<ul class="menu menu-lg menu-horizontal bg-base-200 rounded-box">
-  <li class="menu-title">Tabelas</li>
-  <li><a>Estados</a></li>  
-  <li><a>Pessoas</a></li>
-  <li><a>Documentos</a></li>
-  <li><a>Esportes</a></li>
-  <li><a>EsportesPessoas</a></li>
-</ul>
+<div class="grid h-screen place-items-center">
+  <div class="flex flex-col gap-4 place-items-center">
+    <h1 class="font-bold text-3xl">Tabelas</h1>
+    <ul class="menu menu-lg menu-horizontal rounded-box font-semibold bg-base-300 shadow-xl">
+      <li><a href=<%= documentos_path %>>
+        <div class="flex flex-col place-items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-24 h-24 mb-2" viewBox="0 0 640 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><style>svg{fill:#a6adba}</style><path d="M560 160A80 80 0 1 0 560 0a80 80 0 1 0 0 160zM55.9 512H381.1h75H578.9c33.8 0 61.1-27.4 61.1-61.1c0-11.2-3.1-22.2-8.9-31.8l-132-216.3C495 196.1 487.8 192 480 192s-15 4.1-19.1 10.7l-48.2 79L286.8 81c-6.6-10.6-18.3-17-30.8-17s-24.1 6.4-30.8 17L8.6 426.4C3 435.3 0 445.6 0 456.1C0 487 25 512 55.9 512z"/></svg>
+          <%= button_to "Estados", estados_path, method: :get %>
+        </div>
+      </a></li>
+      <div class="divider divider-horizontal"></div>
+      <li><%= button_to "Pessoas", pessoas_path, method: :get %></li>
+      <div class="divider divider-horizontal"></div>
+      <li><a href=<%= documentos_path %>>
+      <div class="flex flex-col place-items-center">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-24 h-24 mb-2" viewBox="0 0 576 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><style>svg{fill:#a6adba}</style><path d="M528 160V416c0 8.8-7.2 16-16 16H320c0-44.2-35.8-80-80-80H176c-44.2 0-80 35.8-80 80H64c-8.8 0-16-7.2-16-16V160H528zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H512c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zM272 256a64 64 0 1 0 -128 0 64 64 0 1 0 128 0zm104-48c-13.3 0-24 10.7-24 24s10.7 24 24 24h80c13.3 0 24-10.7 24-24s-10.7-24-24-24H376zm0 96c-13.3 0-24 10.7-24 24s10.7 24 24 24h80c13.3 0 24-10.7 24-24s-10.7-24-24-24H376z"/></svg>
+        <%= button_to "Documentos", documentos_path, method: :get %>
+      </div>
+      </a></li>
+      <div class="divider divider-horizontal"></div>
+      <li><a><%= button_to "Esportes", esportes_path, method: :get %></a></li>
+      <div class="divider divider-horizontal"></div>
+      <li><a><%= button_to "EsportesPessoas", esportes_pessoas_path, method: :get %></a></li>
+    </ul>
+  </div>
+</div>
