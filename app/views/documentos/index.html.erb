@@ -1,4 +1,4 @@
-<div class="h-screen">
+<div class="h-screen p-8">
   <% if notice.present? %>
     <div class="alert alert-success">
       <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
@@ -9,7 +9,13 @@
   <div class="w-full h-full grid place-items-center">
     <div class="card bg-base-300 shadow-xl h-[32rem]">
       <div class="card-body overflow-auto">
-        <h1 class="card-title text-2xl justify-center">Documentos</h1>
+        <div class="w-full relative mb-4">
+          <%= link_to home_admin_path, class: "btn btn-sm btn-circle btn-ghost absolute left-0 top-0" do%>
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><style>svg{fill:#a6adba}</style><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+          <% end %>
+          <h1 class="card-title text-2xl justify-center">Documentos</h1>
+          <th class="grid place-items-center"><%= link_to "Novo", new_documento_path, class: "btn btn-sm btn-accent absolute right-0 top-0" %></th>
+        </div>
         <div class="overflow-x-auto">
           <table class="table">
             <thead class="sticky top-0 bg-base-300">
@@ -18,7 +24,8 @@
                 <th>Cpf</th>
                 <th>Pessoa</th>
                 <% if isAdmin? %>
-                  <th colspan="3"></th>
+                  <th colspan="2"></th>
+                  <th class="grid place-items-center"><%= link_to "+", new_documento_path, class: "hidden text-lg btn btn-sm btn-circle btn-neutral" %></th>
                 <% end %>
               </tr>
             </thead>
@@ -31,7 +38,7 @@
                   <% if isAdmin? %>
                     <td><%= link_to "Mostrar", documento, class: "btn btn-sm btn-primary" %></td>
                     <td><%= link_to "Editar", edit_documento_path(documento), class: "btn btn-sm btn-secondary" %></td>
-                    <td><%= link_to "Destruir", documento, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-sm btn-outline" %></td>
+                    <td><%= button_to "Excluir", documento, method: "delete", data: { confirm: "Are you sure?" }, class: "btn btn-sm btn-outline" %></td>
                   <% end %>
                 </tr>
               <% end %>

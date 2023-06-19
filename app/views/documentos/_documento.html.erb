@@ -1,22 +1,20 @@
 <div id="<%= dom_id documento %>">
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Rg:</strong>
-    <%= documento.rg %>
-  </p>
+  <div class="stats stats-vertical bg-base-300 text-primary-content">
+    
+    <div class="stat">
+      <div class="stat-title">Rg</div>
+      <div class="stat-value"><%= documento.rg %></div>
+    </div>
+    
+    <div class="stat">
+      <div class="stat-title">Cpf</div>
+      <div class="stat-value"><%= documento.cpf %></div>
+    </div>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Cpf:</strong>
-    <%= documento.cpf %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Pessoa:</strong>
-    <%= documento.pessoa_id %>
-  </p>
-
-  <% if action_name != "show" %>
-    <%= link_to "Show this documento", documento, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to 'Edit this documento', edit_documento_path(documento), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
-    <hr class="mt-6">
-  <% end %>
+    <div class="stat">
+      <div class="stat-title">Pessoa</div>
+      <div class="stat-value"><%= documento.pessoa_id %></div>
+    </div>
+    
+  </div>
 </div>

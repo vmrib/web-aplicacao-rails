@@ -1,8 +1,7 @@
-<%= form_with(model: documento, class: "contents") do |form| %>
+<%= form_with(model: documento, class: "contents form-control") do |form| %>
   <% if documento.errors.any? %>
-    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
-      <h2><%= pluralize(documento.errors.count, "error") %> prohibited this documento from being saved:</h2>
-
+    <div id="error_explanation" class="alert alert-error mt-4">
+      <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
       <ul>
         <% documento.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -11,22 +10,22 @@
     </div>
   <% end %>
 
-  <div class="my-5">
-    <%= form.label :rg %>
-    <%= form.text_field :rg, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  <div class="form-control my-4 w-full">
+    <%= form.label :rg, class: "label label-text" %>
+    <%= form.text_field :rg, class: "input border-base-100 focus:outline-transparent focus:border-primary w-full" %>
   </div>
 
-  <div class="my-5">
-    <%= form.label :cpf %>
-    <%= form.text_field :cpf, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  <div class="fomr-control my-4 w-full">
+    <%= form.label :cpf, class: "label label-text" %>
+    <%= form.text_field :cpf, class: "input border-base-100 focus:outline-transparent focus:border-primary w-full" %>
   </div>
 
-  <div class="my-5">
-    <%= form.label :pessoa_id %>
-    <%= form.text_field :pessoa_id, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  <div class="fomr-control my-4 w-full">
+    <%= form.label :pessoa_id, class: "label label-text" %>
+    <%= form.text_field :pessoa_id, class: "input border-base-100 focus:outline-transparent focus:border-primary w-full" %>
   </div>
 
-  <div class="inline">
-    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+  <div class="flex w-full mt-8 justify-end">
+    <%= form.submit class: "btn btn-primary" %>
   </div>
 <% end %>
