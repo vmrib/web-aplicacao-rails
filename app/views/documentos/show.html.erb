@@ -8,12 +8,12 @@
 
   <div class="w-full h-full grid place-items-center">
     <dialog open class="modal">
-      <form method="dialog" class="modal-box bg-base-300 w-auto max-w-5xl">
+      <div class="modal-box bg-base-300 w-auto max-w-5xl">
         <h3 class="font-bold text-lg text-center">Mostrar</h3>
         <%= render @documento %>
         <div class="modal-action">
           <%= link_to "Editar", edit_documento_path(@documento), class: "btn btn-sm btn-secondary" %>
-          <%= link_to "Destruir", documento_path(@documento), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-sm btn-outline" %>
+          <%= button_to "Excluir", documento_path(@documento), method: "delete", data: { confirm: "Are you sure?" }, class: "btn btn-sm btn-outline" %>
         </div>
       </form>
       <form method="dialog" class="modal-backdrop">
