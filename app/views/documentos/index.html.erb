@@ -10,12 +10,20 @@
     <div class="card bg-base-300 shadow-xl h-[32rem]">
       <div class="card-body overflow-auto">
         <div class="w-full relative mb-4">
-          <%= link_to home_admin_path, class: "btn btn-sm btn-circle btn-ghost absolute left-0 top-0" do%>
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><style>svg{fill:#a6adba}</style><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+          <% if isAdmin? %>
+            <%= link_to home_admin_path, class: "btn btn-sm btn-circle btn-ghost absolute left-0 top-0" do%>
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><style>svg{fill:#a6adba}</style><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+            <% end %>
+          <% else %>
+            <%= link_to home_user_path, class: "btn btn-sm btn-circle btn-ghost absolute left-0 top-0" do%>
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><style>svg{fill:#a6adba}</style><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+            <% end %>
           <% end %>
           <h1 class="card-title text-2xl justify-center">Documentos</h1>
-          <th class="grid place-items-center"><%= link_to "Novo", new_documento_path, class: "btn btn-sm btn-accent absolute right-0 top-0" %></th>
-        </div>
+          <% if isAdmin? %>
+            <th class="grid place-items-center"><%= link_to "Novo", new_documento_path, class: "btn btn-sm btn-accent absolute right-0 top-0" %></th>
+          <% end %>
+          </div>
         <div class="overflow-x-auto">
           <table class="table">
             <thead class="sticky top-0 bg-base-300">
@@ -36,7 +44,11 @@
                   <td><%= documento.cpf %></td>
                   <td><%= documento.pessoa_id %></td>
                   <% if isAdmin? %>
-                    <td><%= link_to "Mostrar", documento, class: "btn btn-sm btn-primary" %></td>
+                    <td>
+                      <div data-controller="table" ref=<%= documento_path(documento)%>>
+                        <button class="btn btn-sm btn-primary" data-action="table#show">Mostrar</button>
+                      </div>
+                    </td>
                     <td><%= link_to "Editar", edit_documento_path(documento), class: "btn btn-sm btn-secondary" %></td>
                     <td><%= button_to "Excluir", documento, method: "delete", data: { confirm: "Are you sure?" }, class: "btn btn-sm btn-outline" %></td>
                   <% end %>
@@ -48,5 +60,5 @@
       </div>
     </div>
   </div>
-  
+
 </div>
