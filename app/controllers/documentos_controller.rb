@@ -44,7 +44,6 @@ class DocumentosController < ApplicationController
         format.json { render json: @documento.errors, status: :unprocessable_entity }
       end
     end
-    render layout: false
   end
 
   # PATCH/PUT /documentos/1 or /documentos/1.json

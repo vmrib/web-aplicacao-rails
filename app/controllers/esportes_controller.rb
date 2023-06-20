@@ -44,7 +44,6 @@ class EsportesController < ApplicationController
         format.json { render json: @esporte.errors, status: :unprocessable_entity }
       end
     end
-    render layout: false
   end
 
   # PATCH/PUT /esportes/1 or /esportes/1.json
