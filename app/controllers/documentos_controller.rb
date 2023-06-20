@@ -71,7 +71,7 @@ class DocumentosController < ApplicationController
     @documento.destroy
 
     respond_to do |format|
-      format.html { redirect_to documentos_url, notice: "Documento was successfully destroyed." }
+      format.html { redirect_to documentos_url, notice: "Documento excluído com sucesso." }
       format.json { head :no_content }
     end
   end
