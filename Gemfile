@@ -74,3 +74,5 @@ end
 gem "tailwindcss-rails", "~> 2.0"
 
 gem "font-awesome-rails", "~> 4.7"
+
+gem "jquery-rails"

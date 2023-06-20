@@ -1,8 +1,17 @@
 <div class="h-screen p-8 pt-1">
   <% if notice.present? %>
-    <div class="alert alert-success">
-      <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+    <div class="alert alert-success" data-controller="alert">
+      <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
       <span><%= notice %></span>
+      <img src data-action="error->alert#fadeOut"></img>
+    </div>
+  <% end %>
+
+  <% if alert.present? %>
+    <div class="alert alert-error" data-controller="alert">
+      <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+      <span><%= alert %></span>
+      <img src data-action="error->alert#fadeOut"></img>
     </div>
   <% end %>
 
@@ -21,7 +30,9 @@
           <% end %>
           <h1 class="card-title text-2xl justify-center">Documentos</h1>
           <% if isAdmin? %>
-            <th class="grid place-items-center"><%= link_to "Novo", new_documento_path, class: "btn btn-sm btn-accent absolute right-0 top-0" %></th>
+            <th class="grid place-items-center">
+              <button class="btn btn-sm btn-accent absolute right-0 top-0" data-controller="table" ref=<%= new_documento_path%> data-action="table#new">Novo</button>
+            </th>
           <% end %>
           </div>
         <div class="overflow-x-auto">
@@ -44,12 +55,8 @@
                   <td><%= documento.cpf %></td>
                   <td><%= documento.pessoa_id %></td>
                   <% if isAdmin? %>
-                    <td>
-                      <div data-controller="table" ref=<%= documento_path(documento)%>>
-                        <button class="btn btn-sm btn-primary" data-action="table#show">Mostrar</button>
-                      </div>
-                    </td>
-                    <td><%= link_to "Editar", edit_documento_path(documento), class: "btn btn-sm btn-secondary" %></td>
+                    <td><button class="btn btn-sm btn-primary" data-controller="table" ref=<%= documento_path(documento)%> data-action="table#show">Mostrar</button></td>
+                    <td><button class="btn btn-sm btn-secondary" data-controller="table" ref=<%= edit_documento_path(documento)%> data-action="table#edit">Editar</button></td>
                     <td><%= button_to "Excluir", documento, method: "delete", data: { confirm: "Are you sure?" }, class: "btn btn-sm btn-outline" %></td>
                   <% end %>
                 </tr>

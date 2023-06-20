@@ -8,15 +8,18 @@ class DocumentosController < ApplicationController
 
   # GET /documentos/1 or /documentos/1.json
   def show
+    render layout: false
   end
 
   # GET /documentos/new
   def new
     @documento = Documento.new
+    render layout: false
   end
 
   # GET /documentos/1/edit
   def edit
+    render layout: false
   end
 
   # POST /documentos or /documentos.json
@@ -32,16 +35,17 @@ class DocumentosController < ApplicationController
         format.json { render json: @documento.errors, status: :unprocessable_entity }
       end
     end
+    render layout: false
   end
 
   # PATCH/PUT /documentos/1 or /documentos/1.json
   def update
     respond_to do |format|
       if @documento.update(documento_params)
-        format.html { redirect_to documentos_url, notice: "Documento was successfully updated." }
+        format.html { redirect_to documentos_url, notice: "Documento atualizado com sucesso." }
         format.json { render :show, status: :ok, location: @documento }
       else
-        format.html { render :edit, status: :unprocessable_entity }
+        format.html { redirect_to documentos_url, alert: "Erro ao atualizar o documento", status: :unprocessable_entity }
         format.json { render json: @documento.errors, status: :unprocessable_entity }
       end
     end

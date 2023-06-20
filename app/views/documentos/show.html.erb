@@ -1,24 +1,10 @@
-<div class="h-screen p-8">
-  <% if notice.present? %>
-    <div class="alert alert-success mb-4">
-      <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-      <span><%= notice %></span>
-    </div>
-  <% end %>
-
-  <div class="w-full h-full grid place-items-center">
-    <dialog open class="modal">
-      <div class="modal-box bg-base-300 w-auto max-w-5xl">
-        <h3 class="font-bold text-lg text-center">Mostrar</h3>
-        <%= render @documento %>
-        <div class="modal-action">
-          <%= link_to "Editar", edit_documento_path(@documento), class: "btn btn-sm btn-secondary" %>
-          <%= button_to "Excluir", documento_path(@documento), method: "delete", data: { confirm: "Are you sure?" }, class: "btn btn-sm btn-outline" %>
-        </div>
-      </form>
-      <form method="dialog" class="modal-backdrop">
-        <button>close</button>
-      </form>
-    </dialog>
-  </div>
-</div>
+<dialog class="modal">
+  <form method="dialog" class="modal-box bg-base-300 w-auto max-w-5xl">
+    <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+    <h3 class="font-bold text-lg text-center">Mostrar</h3>
+    <%= render @documento %>
+  </form>
+  <form method="dialog" class="modal-backdrop">
+    <button>close</button>
+  </form>
+</dialog>

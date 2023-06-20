@@ -1,11 +1,12 @@
-<div class="h-screen grid place-items-center">
-  <dialog open class="modal">
-    <div class="modal-box bg-base-300">
-      <h3 class="font-bold text-lg text-center">Editar</h3>
-      <%= render "form", documento: @documento %>
-    </div>
-    <form method="dialog" class="modal-backdrop">
-      <button>close</button>
+<dialog class="modal">
+  <div class="modal-box bg-base-300">
+    <form method="dialog">
+      <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
     </form>
-  </dialog>
-</div>
+    <h3 class="font-bold text-lg text-center">Editar</h3>
+    <%= render "form", documento: @documento %>
+  </div>
+  <form method="dialog" class="modal-backdrop">
+    <button>close</button>
+  </form>
+</dialog>
