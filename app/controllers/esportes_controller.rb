@@ -8,40 +8,56 @@ class EsportesController < ApplicationController
 
   # GET /esportes/1 or /esportes/1.json
   def show
+    render layout: false
   end
 
   # GET /esportes/new
   def new
+    if not helpers.isAdmin?
+      return
+    end
     @esporte = Esporte.new
+    render layout: false
   end
 
   # GET /esportes/1/edit
   def edit
+    if not helpers.isAdmin?
+      return
+    end
+    render layout: false
   end
 
   # POST /esportes or /esportes.json
   def create
+    if not helpers.isAdmin?
+      return
+    end
     @esporte = Esporte.new(esporte_params)
 
     respond_to do |format|
       if @esporte.save
-        format.html { redirect_to esporte_url(@esporte), notice: "Esporte was successfully created." }
+        format.html { redirect_to esportes_url, notice: "Esporte criado com sucesso." }
         format.json { render :show, status: :created, location: @esporte }
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @esporte.errors, status: :unprocessable_entity }
       end
     end
+    render layout: false
   end
 
   # PATCH/PUT /esportes/1 or /esportes/1.json
   def update
+    if not helpers.isAdmin?
+      return
+    end
     respond_to do |format|
       if @esporte.update(esporte_params)
-        format.html { redirect_to esporte_url(@esporte), notice: "Esporte was successfully updated." }
+        format.html { redirect_to esportes_url, notice: "Esporte atualizado com sucesso." }
         format.json { render :show, status: :ok, location: @esporte }
       else
-        format.html { render :edit, status: :unprocessable_entity }
+        format.html { redirect_to esportes_url, alert: "Erro ao atualizar esporte.", status: :unprocessable_entity }
         format.json { render json: @esporte.errors, status: :unprocessable_entity }
       end
     end
@@ -49,10 +65,13 @@ class EsportesController < ApplicationController
 
   # DELETE /esportes/1 or /esportes/1.json
   def destroy
+    if not helpers.isAdmin?
+      return
+    end
     @esporte.destroy
 
     respond_to do |format|
-      format.html { redirect_to esportes_url, notice: "Esporte was successfully destroyed." }
+      format.html { redirect_to esportes_url, notice: "Esporte excluído com sucesso." }
       format.json { head :no_content }
     end
   end
