@@ -13,17 +13,26 @@ class DocumentosController < ApplicationController
 
   # GET /documentos/new
   def new
+    if not helpers.isAdmin?
+      return
+    end
     @documento = Documento.new
     render layout: false
   end
 
   # GET /documentos/1/edit
   def edit
+    if not helpers.isAdmin?
+      return
+    end
     render layout: false
   end
 
   # POST /documentos or /documentos.json
   def create
+    if not helpers.isAdmin?
+      return
+    end
     @documento = Documento.new(documento_params)
 
     respond_to do |format|
@@ -40,6 +49,9 @@ class DocumentosController < ApplicationController
 
   # PATCH/PUT /documentos/1 or /documentos/1.json
   def update
+    if not helpers.isAdmin?
+      return
+    end
     respond_to do |format|
       if @documento.update(documento_params)
         format.html { redirect_to documentos_url, notice: "Documento atualizado com sucesso." }
@@ -53,6 +65,9 @@ class DocumentosController < ApplicationController
 
   # DELETE /documentos/1 or /documentos/1.json
   def destroy
+    if not helpers.isAdmin?
+      return
+    end
     @documento.destroy
 
     respond_to do |format|
