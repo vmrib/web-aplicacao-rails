@@ -54,8 +54,8 @@
                   <td><%= documento.rg %></td>
                   <td><%= documento.cpf %></td>
                   <td><%= documento.pessoa_id %></td>
+                  <td><button class="btn btn-sm btn-primary" data-controller="table" ref=<%= documento_path(documento)%> data-action="table#show">Mostrar</button></td>
                   <% if isAdmin? %>
-                    <td><button class="btn btn-sm btn-primary" data-controller="table" ref=<%= documento_path(documento)%> data-action="table#show">Mostrar</button></td>
                     <td><button class="btn btn-sm btn-secondary" data-controller="table" ref=<%= edit_documento_path(documento)%> data-action="table#edit">Editar</button></td>
                     <td><%= button_to "Excluir", documento, method: "delete", data: { confirm: "Are you sure?" }, class: "btn btn-sm btn-outline" %></td>
                   <% end %>

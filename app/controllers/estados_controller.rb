@@ -8,27 +8,39 @@ class EstadosController < ApplicationController
 
   # GET /estados/1 or /estados/1.json
   def show
+    render layout: false
   end
 
   # GET /estados/new
   def new
+    if not helpers.isAdmin?
+      return
+    end
     @estado = Estado.new
+    render layout: false
   end
 
   # GET /estados/1/edit
   def edit
+    if not helpers.isAdmin?
+      return
+    end
+    render layout: false
   end
 
   # POST /estados or /estados.json
   def create
+    if not helpers.isAdmin?
+      return
+    end
     @estado = Estado.new(estado_params)
 
     respond_to do |format|
       if @estado.save
-        format.html { redirect_to estado_url(@estado), notice: "Estado was successfully created." }
+        format.html { redirect_to estados_url, notice: "Estado criado com sucesso." }
         format.json { render :show, status: :created, location: @estado }
       else
-        format.html { render :new, status: :unprocessable_entity }
+        format.html { redirect_to estados_url, alert: "Erro ao criar o estado", status: :unprocessable_entity }
         format.json { render json: @estado.errors, status: :unprocessable_entity }
       end
     end
@@ -36,12 +48,15 @@ class EstadosController < ApplicationController
 
   # PATCH/PUT /estados/1 or /estados/1.json
   def update
+    if not helpers.isAdmin?
+      return
+    end
     respond_to do |format|
       if @estado.update(estado_params)
-        format.html { redirect_to estado_url(@estado), notice: "Estado was successfully updated." }
+        format.html { redirect_to estados_url, notice: "Estado atualizado com sucesso." }
         format.json { render :show, status: :ok, location: @estado }
       else
-        format.html { render :edit, status: :unprocessable_entity }
+        format.html { redirect_to estados_url, alert: "Erro ao atualizar o estado", status: :unprocessable_entity }
         format.json { render json: @estado.errors, status: :unprocessable_entity }
       end
     end
@@ -49,6 +64,9 @@ class EstadosController < ApplicationController
 
   # DELETE /estados/1 or /estados/1.json
   def destroy
+    if not helpers.isAdmin?
+      return
+    end
     @estado.destroy
 
     respond_to do |format|

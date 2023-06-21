@@ -37,10 +37,10 @@ class DocumentosController < ApplicationController
 
     respond_to do |format|
       if @documento.save
-        format.html { redirect_to documentos_url, notice: "Documento was successfully created." }
+        format.html { redirect_to documentos_url, notice: "Documento criado com sucesso." }
         format.json { render :show, status: :created, location: @documento }
       else
-        format.html { render :new, status: :unprocessable_entity }
+        format.html { redirect_to documentos_url, alert: "Erro ao criar o documento", status: :unprocessable_entity }
         format.json { render json: @documento.errors, status: :unprocessable_entity }
       end
     end

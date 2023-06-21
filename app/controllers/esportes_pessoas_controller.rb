@@ -8,27 +8,39 @@ class EsportesPessoasController < ApplicationController
 
   # GET /esportes_pessoas/1 or /esportes_pessoas/1.json
   def show
+    render layout: false
   end
 
   # GET /esportes_pessoas/new
   def new
+    if not helpers.isAdmin?
+      return
+    end
     @esportes_pessoa = EsportesPessoa.new
+    render layout: false
   end
 
   # GET /esportes_pessoas/1/edit
   def edit
+    if not helpers.isAdmin?
+      return
+    end
+    render layout: false
   end
 
   # POST /esportes_pessoas or /esportes_pessoas.json
   def create
+    if not helpers.isAdmin?
+      return
+    end
     @esportes_pessoa = EsportesPessoa.new(esportes_pessoa_params)
 
     respond_to do |format|
       if @esportes_pessoa.save
-        format.html { redirect_to esportes_pessoa_url(@esportes_pessoa), notice: "Esportes pessoa was successfully created." }
+        format.html { redirect_to esportes_pessoas_url, notice: "EsportesPessoa criado com sucesso." }
         format.json { render :show, status: :created, location: @esportes_pessoa }
       else
-        format.html { render :new, status: :unprocessable_entity }
+        format.html { redirect_to esportes_pessoas_url, alert: "Erro ao criar esportesPessoa", status: :unprocessable_entity }
         format.json { render json: @esportes_pessoa.errors, status: :unprocessable_entity }
       end
     end
@@ -36,12 +48,15 @@ class EsportesPessoasController < ApplicationController
 
   # PATCH/PUT /esportes_pessoas/1 or /esportes_pessoas/1.json
   def update
+    if not helpers.isAdmin?
+      return
+    end
     respond_to do |format|
       if @esportes_pessoa.update(esportes_pessoa_params)
-        format.html { redirect_to esportes_pessoa_url(@esportes_pessoa), notice: "Esportes pessoa was successfully updated." }
+        format.html { redirect_to esportes_pessoas_url, notice: "EsportesPessoa atualizado com sucesso." }
         format.json { render :show, status: :ok, location: @esportes_pessoa }
       else
-        format.html { render :edit, status: :unprocessable_entity }
+        format.html { redirect_to esportes_pessoas_url, alert: "Erro ao atualizar esportesPessoa", status: :unprocessable_entity }
         format.json { render json: @esportes_pessoa.errors, status: :unprocessable_entity }
       end
     end
@@ -49,6 +64,9 @@ class EsportesPessoasController < ApplicationController
 
   # DELETE /esportes_pessoas/1 or /esportes_pessoas/1.json
   def destroy
+    if not helpers.isAdmin?
+      return
+    end
     @esportes_pessoa.destroy
 
     respond_to do |format|

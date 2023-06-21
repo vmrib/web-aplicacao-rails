@@ -1,17 +1,15 @@
 <div id="<%= dom_id esportes_pessoa %>">
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Esporte:</strong>
-    <%= esportes_pessoa.esporte_id %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Pessoa:</strong>
-    <%= esportes_pessoa.pessoa_id %>
-  </p>
-
-  <% if action_name != "show" %>
-    <%= link_to "Show this esportes pessoa", esportes_pessoa, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to 'Edit this esportes pessoa', edit_esportes_pessoa_path(esportes_pessoa), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
-    <hr class="mt-6">
-  <% end %>
+  <div class="stats stats-vertical bg-base-300 text-primary-content">
+    
+    <div class="stat">
+      <div class="stat-title">Esporte</div>
+      <div class="stat-value"><%= esportes_pessoa.esporte_id %></div>
+    </div>
+    
+    <div class="stat">
+      <div class="stat-title">Pessoa</div>
+      <div class="stat-value"><%= esportes_pessoa.pessoa_id %></div>
+    </div>
+    
+  </div>
 </div>

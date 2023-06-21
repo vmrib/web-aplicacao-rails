@@ -1,8 +1,12 @@
-<div class="mx-auto md:w-2/3 w-full">
-  <h1 class="font-bold text-4xl">Editing esportes pessoa</h1>
-
-  <%= render "form", esportes_pessoa: @esportes_pessoa %>
-
-  <%= link_to "Show this esportes pessoa", @esportes_pessoa, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-  <%= link_to "Back to esportes pessoas", esportes_pessoas_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-</div>
+<dialog class="modal">
+  <div class="modal-box bg-base-300">
+    <form method="dialog">
+      <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+    </form>
+    <h3 class="font-bold text-lg text-center">Editar EsportesPessoa</h3>
+    <%= render "form", esportes_pessoa: @esportes_pessoa %>
+  </div>
+  <form method="dialog" class="modal-backdrop">
+    <button>close</button>
+  </form>
+</dialog>

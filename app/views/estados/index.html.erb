@@ -1,14 +1,69 @@
-<div class="w-full">
+<div class="h-screen p-8 pt-1">
   <% if notice.present? %>
-    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+    <div class="alert alert-success" data-controller="alert">
+      <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+      <span><%= notice %></span>
+      <img src data-action="error->alert#fadeOut"></img>
+    </div>
   <% end %>
 
-  <div class="flex justify-between items-center">
-    <h1 class="font-bold text-4xl">Estados</h1>
-    <%= link_to 'New estado', new_estado_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
+  <% if alert.present? %>
+    <div class="alert alert-error" data-controller="alert">
+      <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+      <span><%= alert %></span>
+      <img src data-action="error->alert#fadeOut"></img>
+    </div>
+  <% end %>
+
+  <div class="w-full h-full grid place-items-center">
+    <div class="card bg-base-300 shadow-xl h-[32rem]">
+      <div class="card-body overflow-auto">
+        <div class="w-full relative mb-4">
+          <% if isAdmin? %>
+            <%= link_to home_admin_path, class: "btn btn-sm btn-circle btn-ghost absolute left-0 top-0" do%>
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><style>svg{fill:#a6adba}</style><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+            <% end %>
+          <% else %>
+            <%= link_to home_user_path, class: "btn btn-sm btn-circle btn-ghost absolute left-0 top-0" do%>
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><style>svg{fill:#a6adba}</style><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+            <% end %>
+          <% end %>
+          <h1 class="card-title text-2xl justify-center">Estados</h1>
+          <% if isAdmin? %>
+            <th class="grid place-items-center">
+              <button class="btn btn-sm btn-accent absolute right-0 top-0" data-controller="table" ref=<%= new_estado_path%> data-action="table#new">Novo</button>
+            </th>
+          <% end %>
+          </div>
+        <div class="overflow-x-auto">
+          <table class="table">
+            <thead class="sticky top-0 bg-base-300">
+              <tr>
+                <th>Sigla</th>
+                <th>Nome</th>
+                <% if isAdmin? %>
+                  <th colspan="2"></th>
+                  <th class="grid place-items-center"><%= link_to "+", new_estado_path, class: "hidden text-lg btn btn-sm btn-circle btn-neutral" %></th>
+                <% end %>
+              </tr>
+            </thead>
+            <tbody>
+              <% @estados.each do |estado| %>
+                <tr class="hover">
+                  <td><%= estado.sigla %></td>
+                  <td><%= estado.nome %></td>
+                  <td><button class="btn btn-sm btn-primary" data-controller="table" ref=<%= estado_path(estado)%> data-action="table#show">Mostrar</button></td>
+                  <% if isAdmin? %>
+                    <td><button class="btn btn-sm btn-secondary" data-controller="table" ref=<%= edit_estado_path(estado)%> data-action="table#edit">Editar</button></td>
+                    <td><%= button_to "Excluir", estado, method: "delete", data: { confirm: "Are you sure?" }, class: "btn btn-sm btn-outline" %></td>
+                  <% end %>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <div id="estados" class="min-w-full">
-    <%= render @estados %>
-  </div>
 </div>

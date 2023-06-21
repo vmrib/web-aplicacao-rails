@@ -50,8 +50,8 @@
               <% @esportes.each do |esporte| %>
                 <tr class="hover">
                   <td><%= esporte.nome %></td>
+                  <td><button class="btn btn-sm btn-primary" data-controller="table" ref=<%= esporte_path(esporte)%> data-action="table#show">Mostrar</button></td>
                   <% if isAdmin? %>
-                    <td><button class="btn btn-sm btn-primary" data-controller="table" ref=<%= esporte_path(esporte)%> data-action="table#show">Mostrar</button></td>
                     <td><button class="btn btn-sm btn-secondary" data-controller="table" ref=<%= edit_esporte_path(esporte)%> data-action="table#edit">Editar</button></td>
                     <td><%= button_to "Excluir", esporte, method: "delete", data: { confirm: "Are you sure?" }, class: "btn btn-sm btn-outline" %></td>
                   <% end %>
