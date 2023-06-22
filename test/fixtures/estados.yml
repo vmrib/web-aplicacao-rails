@@ -1,9 +1,16 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  sigla: MyString
-  nome: MyString
+valid:
+  sigla: "PR"
+  nome: "Paraná"
 
-two:
-  sigla: MyString
-  nome: MyString
+tooLong:
+  sigla: "XXX"
+  nome: "Inválido"
+
+invalidChar:
+  sigla: "P2"
+  nome: "Paraná"
+
+noSigla:
+  nome: "Equador"

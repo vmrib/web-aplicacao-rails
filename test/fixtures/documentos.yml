@@ -1,11 +1,24 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  rg: MyString
-  cpf: MyString
-  pessoa: one
+valid:
+  rg: "12345678"
+  cpf: "333333333"
+  pessoa: 1
 
-two:
-  rg: MyString
-  cpf: MyString
-  pessoa: two
+rgInvalidChar:
+  rg: "1234567a"
+  cpf: "333333333"
+  pessoa: 1
+
+cpfInvalidChar:
+  rg: "12345678"
+  cpf: "33333333a"
+  pessoa: 1
+
+noRg:
+  cpf: "333333333"
+  pessoa: 1
+
+noCpf:
+  rg: "12345678"
+  pessoa: 1
