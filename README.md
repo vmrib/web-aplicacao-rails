@@ -1,24 +1,17 @@
-# README
+## Login
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+O login é feito setando uma flag durante a sessão do usuário (ver home_controller). Foi criado um helper isAdmin? para as views checarem se o usuário atual é ou não admin.
 
-Things you may want to cover:
+## Jquery
 
-* Ruby version
+Foi utilizado JQuery + Ajax para fazer requisições de Mostrar, Editar e criar um novo elemento das tabelas.
+Assim, o usuário permanece na mesma página da tabela, e um popup é aberto ao invés de navegar para outra página.
+O código está em app/javascripts/controllers/table_controller.js
 
-* System dependencies
+## Testes
 
-* Configuration
+Apesar de criar casos de testes para modelos, não consegui executar o rake. Ao executar rake test obtenho Segmentation Fault, tanto nas máquina do departamento como na minha maquina pessoal.
 
-* Database creation
+## CSS
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Foi utilizado o framework TailwindCSS com o plugin DaisyUI para estilizar as páginas.
