@@ -11,6 +11,7 @@ Trabalho desenvolvido para a disciplina de [Programação Web](https://www.inf.u
 Requisitos:
 - Ruby v2.7.0
 - Ruby on Rails
+- Node
 
 Após clonar o repositório, execute os seguintes comandos:
 
