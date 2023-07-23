@@ -1,8 +1,8 @@
 # Aplicação Rails
 
-Trabalho desenvolvido para a disciplina de Programação Web, do curso de Ciência da Computação da Universidade Federal do Paraná. A aplicação escolhida foi um editor de tabelas de um banco de dados.
+Trabalho desenvolvido para a disciplina de [Programação Web](https://www.inf.ufpr.br/bmuller/#/ci1010), do curso de Ciência da Computação da Universidade Federal do Paraná. A aplicação escolhida foi um editor de tabelas de um banco de dados.
 
-- Deve Utilizar o framework rails.
+- Deve utilizar o framework rails.
 - As views devem inserir, retirar e excluir elementos das tabelas, observando as relações 1x1, 1xn, nxn.
 - Deve haver uma tela de login, e o uso de dois tipos de usuário: o administrador (por exemplo para incluir, alterar e excluir novos registros no BD) e usuários (para consultar estes registros). Usuários não podem incluir, alterar e excluir elementos.
 
