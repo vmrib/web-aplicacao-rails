@@ -8,6 +8,10 @@ Trabalho desenvolvido para a disciplina de [Programação Web](https://www.inf.u
 
 ## Instalação
 
+Requisitos:
+- Ruby v2.7.0
+- Ruby on Rails
+
 Após clonar o repositório, execute os seguintes comandos:
 
 ```bash
